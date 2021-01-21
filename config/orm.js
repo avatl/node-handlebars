@@ -1,5 +1,4 @@
 var connection = require("../config/connection");
-
 function createQmarks(num) {
     var arr = [];
     for (var i = 0; i < num; i++) {
@@ -7,7 +6,6 @@ function createQmarks(num) {
     }
     return arr.toString();
 }
-
 function translateSql(ob) {
     var arr = [];
     for (var key in ob) {
@@ -21,11 +19,9 @@ function translateSql(ob) {
     }
     return arr.toString();
 }
-
 var orm = {
     selectAll: function (table, cb) {
         var dbQuery = "SELECT * FROM " + table + ";";
-
         connection.query(dbQuery, function (err, res) {
             if (err) {
                 throw err;
@@ -43,7 +39,6 @@ var orm = {
             "VALUES (" +
             createQmarks(vals.length) +
             ") ";
-
         console.log(dbQuery);
         connection.query(dbQuery, vals, function (err, res) {
             if (err) {
@@ -60,9 +55,7 @@ var orm = {
             translateSql(objColVals) +
             " WHERE " +
             condition;
-
         console.log(dbQuery);
-
         connection.query(dbQuery, function (err, res) {
             if (err) {
                 throw err;
@@ -73,7 +66,6 @@ var orm = {
     deleteOne: function (table, condition, cb) {
         var dbQuery = "DELETE FROM " + table + " WHERE " + condition;
         console.log(dbQuery);
-
         connection.query(dbQuery, function (err, res) {
             if (err) {
                 throw err;
