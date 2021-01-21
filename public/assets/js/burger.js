@@ -1,14 +1,12 @@
 $(function () {
   $(".create-form").on("submit", function (event) {
     event.preventDefault();
-
     var newBurger = {
       burger_name: $("#newburger")
         .val()
         .trim(),
       devoured: 0
     };
-
     $.ajax("/api/burgers", {
       type: "POST",
       data: newBurger
@@ -17,15 +15,13 @@ $(function () {
       location.reload();
     });
   });
-
   $(".eatburger").on("click", function (event) {
     event.preventDefault();
-
-    var id = $(this).data("id");
+    var id = $(this).attr("data-id");
     var devouredState = {
       devoured: 1
     };
-
+    console.log(id)
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
       data: devouredState
@@ -34,12 +30,9 @@ $(function () {
       location.reload();
     });
   });
-
   $(".trashburger").on("click", function (event) {
     event.preventDefault();
-
     var id = $(this).data("id");
-
     // Send the DELETE request.
     $.ajax({
       type: "DELETE",

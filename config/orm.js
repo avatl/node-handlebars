@@ -24,10 +24,9 @@ var orm = {
         var dbQuery = "SELECT * FROM " + table + ";";
         connection.query(dbQuery, function (err, res) {
             if (err) {
-                return false;
-            } else {
-                return false;
+                throw err;
             }
+            cb(res);
         });
     },
     insertOne: function (table, cols, vals, cb) {
@@ -43,10 +42,9 @@ var orm = {
         console.log(dbQuery);
         connection.query(dbQuery, vals, function (err, res) {
             if (err) {
-                return false;
-            } else {
-                return false;
+                throw err;
             }
+            cb(res);
         });
     },
     updateOne: function (table, objColVals, condition, cb) {
@@ -60,10 +58,9 @@ var orm = {
         console.log(dbQuery);
         connection.query(dbQuery, function (err, res) {
             if (err) {
-                return false;
-            } else {
-                return false;
+                throw err;
             }
+            cb(res);
         });
     },
     deleteOne: function (table, condition, cb) {
@@ -71,10 +68,9 @@ var orm = {
         console.log(dbQuery);
         connection.query(dbQuery, function (err, res) {
             if (err) {
-                return false;
-            } else {
-                return false;
+                throw err;
             }
+            cb(res);
         });
     }
 };
